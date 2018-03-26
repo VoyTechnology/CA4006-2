@@ -1,0 +1,40 @@
+version: 2
+jobs:
+
+  build:
+    working_directory: /ca4006
+    docker:
+      - image: openjdk:8-alpine
+    steps:
+      - checkout
+      - run: apk add --update make
+      - run: make package
+      - persist_to_workspace:
+          root: /ca4006
+          paths:
+            - out/assignment2.war
+
+  deploy:
+    working_directory: /ca4006
+    docker:
+      - image: openjdk:8-alpine
+    steps:
+      - run: apk add --update make
+      - attach_workspace:
+          at: /ca4006
+      # TODO: Deploy should actually save releases to github
+      - store_artifacts:
+          path: /ca4006/out/assignment2.war
+          destination: assignment2.war
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+        filters:
+          branches:
+            only: master
