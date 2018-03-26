@@ -1,4 +1,7 @@
-# CA4006-2
+CA4006-2
+========
+
+ [![CircleCI](https://circleci.com/gh/VoyTechnology/CA4006-2.svg?style=shield)](https://circleci.com/gh/VoyTechnology/CA4006-2)
 
 [CA4006 Assignment 2][1]
 
