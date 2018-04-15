@@ -6,8 +6,8 @@ clean:
 	@rm -f servlet-api.jar
 
 get-servlet-api:
-	@docker run -it -v ${PWD}/:/tmp tomcat:9-jre8-alpine /bin/bash -c \
-		"cd lib && chmod a+r servlet-api.jar && cp servlet-api.jar /tmp"
+	docker run -it -v ${PWD}/:/tmp tomcat:9-jre8-alpine /bin/bash -c \
+		"cd lib && ls && chmod a+r servlet-api.jar && cp servlet-api.jar /tmp"
 
 build: clean get-servlet-api
 	@javac -classpath ${PWD}/servlet-api.jar -d out/WEB-INF/classes src/*.java
