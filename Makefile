@@ -2,7 +2,7 @@ all: build
 
 clean:
 	@rm -rf out
-	@mkdir -p out/WEB-INF
+	@mkdir -p out/WEB-INF/classes
 	@rm -f servlet-api.jar
 
 get-servlet-api:
