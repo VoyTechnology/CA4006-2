@@ -6,8 +6,9 @@ jobs:
     docker:
       - image: openjdk:8-alpine
     steps:
+      - setup_remote_docker
       - checkout
-      - run: apk add --update make
+      - run: apk add --update make docker
       - run: make package
       - persist_to_workspace:
           root: /ca4006
