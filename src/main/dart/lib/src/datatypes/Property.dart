@@ -59,7 +59,7 @@ class Property {
     this.alarm,
     this.petsAllowed,
     this.selfSustainable,
-    this.auctionCloseTimestamp, 
+    this.auctionCloseTimestamp,
     this.postedTimestamp,
     this.viewingTimes,
   });

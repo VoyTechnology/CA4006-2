@@ -79,12 +79,15 @@ class PropertyDetailComponent implements OnInit {
 
   /// Activated when form is submited
   void onSubmit() {
-    newProperty.postedTimestamp = new DateTime.now();
+    print(newProperty);
+    newProperty
+      ..postedTimestamp = new DateTime.now()
+      ..auctionCloseTimestamp = new DateTime.now().add(const Duration(hours: 3));
     _propertyService.create(newProperty)
       .then((res) {
-        if (res.error == null) {
+        // if (res.error == null) {
           _router.navigate(['Dashboard']).whenComplete(() {});
-        }
+        // }
       })
       .whenComplete(() {});
   }

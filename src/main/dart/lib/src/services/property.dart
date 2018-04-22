@@ -36,7 +36,7 @@ class PropertyService {
       await _http.post(
         "$_propertyUrl/new",
         headers: _headers,
-        body: JSON.encode(property),
+        body: JSON.encode(property.toJson()),
       );
 
       return;

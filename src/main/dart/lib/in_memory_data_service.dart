@@ -45,31 +45,34 @@ class InMemoryDataService extends MockClient {
     final splitURL = req.url.pathSegments;
 
     switch(splitURL[2]) {
-      case 'properties':
-        return _handleProperties(req);
       case 'property':
         return _handleProperty(req);
       case 'login':
         return _handleLogin(req);
     }
 
-    return _handleProperties(req);
-
-    // return new Response(JSON.encode({"data":"hello"}), 200, headers: _headers);
+    return new Response(JSON.encode({"error":"bad"}), 404, headers: _headers);
   }
 
-  static Future<Response> _handleProperties(Request req) async {
-    if (req.method == 'GET') {
-      return new Response(JSON.encode(_propertiesDB), 200, headers: _headers);
-    }
-    
-    return new Response(JSON.encode('{"error":"only GET is accepted"}'), 405);
-  }
+  static int _nextId = 1;
 
   static Future<Response> _handleProperty(Request req) async {
     if (req.method == 'GET') {
-      final id = int.parse(req.url.pathSegments[3], onError: (_) => 0);
-      return new Response(JSON.encode(_propertiesDB[id-1]), 200, headers: _headers);
+      final _id = req.url.pathSegments[3];
+      if (_id == 'all') {
+        return new Response(JSON.encode(_propertiesDB), 200, headers: _headers);
+      }
+
+      final id = int.parse(_id, onError: (_) => 0);
+      return new Response(JSON.encode(_propertiesDB[id]), 200, headers: _headers);
+    }
+    if (req.method == 'POST') {
+      print('new');
+      final prop = new Property.fromJson(JSON.decode(req.body))
+        ..id = _nextId;
+      _nextId++;
+      _propertiesDB.add(prop);
+      return new Response(JSON.encode({'success': 'true'}), 200, headers: _headers);
     }
 
     return new Response(JSON.encode('{"error":"unknown method"}'), 405);
