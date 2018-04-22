@@ -10,7 +10,7 @@ import '../datatypes/Property.dart';
 @Injectable()
 class PropertiesService {
   static final _headers = {'Content-Type': 'application/json'};
-  static const _propertiesUrl = '/api/v1/properties';
+  static const _propertiesUrl = '/api/v1/property/all';
   final Client _http;
 
   /// Initializes the http connection

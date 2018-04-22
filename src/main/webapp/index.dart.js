@@ -16742,7 +16742,7 @@ eH:[function(){var z=0,y=P.aO(),x,w=2,v,u=[],t=this,s,r,q,p,o
 var $async$eH=P.aV(function(a,b){if(a===1){v=b
 z=w}while(true)switch(z){case 0:w=4
 z=7
-return P.aN(J.lM(t.a,"/api/v1/properties",$.$get$oj()),$async$eH)
+return P.aN(J.lM(t.a,"/api/v1/property/all",$.$get$oj()),$async$eH)
 case 7:s=b
 q=P.ax(C.w.cc(J.fv(s)),!0,null)
 q=new H.bk(q,new E.CM(),[H.F(q,0),null]).aB(0)
