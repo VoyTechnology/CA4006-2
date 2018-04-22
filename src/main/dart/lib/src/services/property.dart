@@ -29,6 +29,21 @@ class PropertyService {
       throw _handleError(e);
     }
   }
+
+  /// crates a new request
+  Future<Null> create(Property property) async {
+    try {
+      await _http.post(
+        "$_propertyUrl/new",
+        headers: _headers,
+        body: JSON.encode(property),
+      );
+
+      return;
+    } on Exception catch(_) {
+      return;
+    }
+  }
 }
 
 Exception _handleError(e) {

@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
-// import 'package:angular_components/app_layout/material_persistent_drawer.dart';
+
+import '../../services/login.dart';
 
 /// Contains the header
 @Component(
@@ -11,14 +14,36 @@ import 'package:angular_router/angular_router.dart';
     'header.css',
   ],
   directives: const [
+    CORE_DIRECTIVES,
     ROUTER_DIRECTIVES,
     // MaterialPersistentDrawerDirective,
   ],
+  providers: const [
+    LoginService,
+  ]
 )
-class AppHeaderComponent {
+class AppHeaderComponent implements OnInit {
+  final LoginService _loginService;
+
   /// Header title
   String title = "Property Listings";
 
+  /// Email address of the user
+  String email;
+
   /// AppHeader constructor
-  AppHeaderComponent();
+  AppHeaderComponent(
+    this._loginService,
+  );
+
+  Future<Null> _initializeHeader() async {
+    final _userInfo = await _loginService.login(null);
+    
+    if (_userInfo != null) {
+      email = _userInfo.email;
+    }
+  }
+
+  @override
+  Future<Null> ngOnInit() => _initializeHeader();
 }

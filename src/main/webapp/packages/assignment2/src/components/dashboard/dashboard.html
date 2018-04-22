@@ -1,9 +1,0 @@
-<h1>Properties</h1>
-<div class='property-list'>
-    <a class="card shadow"
-            *ngFor='let property of properties'
-            [routerLink]="['PropertyDetail', {id: property.id.toString()}]">
-        {{property.eircode}}
-        {{property.askingPrice}}
-    </a>
-</div>

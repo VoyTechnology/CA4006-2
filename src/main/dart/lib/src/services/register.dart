@@ -9,16 +9,16 @@ import '../datatypes/Login.dart';
 
 /// LoginService allows the user to login to the server
 @Injectable()
-class LoginService {
+class RegistrationService {
   static final _headers = {'Content-Type': 'application/json'};
-  static const _loginUrl = "/api/v1/login";
+  static const _loginUrl = "/api/v1/register";
   final Client _http;
 
   /// Constructor which also initializes the http connection
-  LoginService(this._http);
+  RegistrationService(this._http);
 
   /// Checks is a user already logged in, if not, it sends the request
-  Future<LoginResponse> login(LoginRequest req) async {
+  Future<LoginResponse> register(LoginRequest req) async {
     if (window.localStorage['session_token'] != null) {
       return new LoginResponse(
         token: window.localStorage['session_token'],

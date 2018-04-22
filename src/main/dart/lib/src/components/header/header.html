@@ -2,7 +2,12 @@
     <div class="material-header-row">
             <a [routerLink]="['Dashboard']" class="material-header-title">{{title}}</a>
             <div class="material-spacer"></div>
-            <nav class="material-navigation">
+            <nav class="material-navigation" *ngIf="email != null">
+                <a [routerLink]="['PropertyDetail', {id: 'new'}]">New Property</a>
+                <a>{{email}}</a>
+            </nav>
+            <nav class="material-navigation" *ngIf="email == null">
+                <a [routerLink]="['Register']">Register</a>
                 <a [routerLink]="['Login']">Login</a>
             </nav>
     </div>

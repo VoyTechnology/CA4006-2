@@ -7,6 +7,7 @@ import 'src/components/dashboard/dashboard.dart';
 import 'src/components/header/header.dart';
 import 'src/components/login/login.dart';
 import 'src/components/property/property.dart';
+import 'src/components/register/register.dart';
 
 /// Main entrypoint
 @Component(
@@ -28,6 +29,11 @@ import 'src/components/property/property.dart';
     path: '/login',
     name: 'Login',
     component: LoginComponent,
+  ),
+  const Route(
+    path: '/register',
+    name: 'Register',
+    component: RegistrationComponent,
   ),
   const Route(
     path: '/property/:id',

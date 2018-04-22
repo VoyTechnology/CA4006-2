@@ -1,16 +1,45 @@
 <!-- TODO: Add Tabs -->
 
-<div *ngIf="property != null" class="items-column">
+<div *ngIf="makeNewProperty" class="new-property">
+    <h1>Create a new property</h1>
+
+    <form (ngSubmit)="onSubmit()">
+        <input [(ngModel)]="newProperty.eircode" placeholder="eircode">
+        <textarea [(ngModel)]="newProperty.description" placeholder="Description. Markdown accepted"></textarea>
+        Property Type: Apartment, House
+        Asking Price
+        <input [(ngModel)]="newProperty.bedrooms" type="number" placeholder="Bedrooms">
+        <input [(ngModel)]="newProperty.bathrooms" type="number" placeholder="Bathrooms">
+        <input [(ngModel)]="newProperty.area" type="number" placeholder="Area">
+        Garage
+        Parking
+        Alarm
+        Pets
+        Self Sustainable
+        Auction close selector
+        viewing times
+    </form>
+</div>
+
+<div *ngIf="property != null" class="items-columns">
     <div class="items-rows width-70">
-        <div>
-            {{ property.eircode }} TODO: Resolve address
+        <div class="items-columns">
+            <span>
+                    {{property.eircode}}
+            </span>
+            <span>
+                    {{property.address}}
+            </span>
         </div>
         <div class="items-rows">
-            <span class="column">
-                {{ property.askingPrice }}
+            <span>
+                {{ property.askingPrice | currency:'EUR':true }} Asking Price
             </span>
-            <span class="column">
+            <span>
                 {{property.bedrooms}} Bedrooms
+            </span>
+            <span>
+                {{property.bathrooms}} Bathrooms
             </span>
         </div>
         <div>
@@ -19,13 +48,30 @@
     </div>
     <div class="items-rows width-30">
         <div>
-            Properties
+            Features
         </div>
-        <div *ngIf="property.selfSustainable">
-            <i class="material-icons">nature</i>
+        <div class="features">
+            <div *ngIf="property.garage">
+                    <i class="material-icons">directions_car</i>
+                    Garage
+            </div>
+            <div *ngIf="property.parking">
+                    <i class="material-icons">local_parking</i>
+                    Parking
+            </div>
+            <div *ngIf="property.alarm">
+                    <i class="material-icons">lock</i>
+                    Alarm
+            </div>
+            <div *ngIf="property.petsAllowed">
+                    <i class="material-icons">pets</i>
+                    Pets Allowed
+            </div>
+            <div *ngIf="property.selfSustainable">
+                <i class="material-icons">nature_people</i>
+                Self Sustainable
+            </div>
         </div>
-        <div *ngIf="property.petsAllowed">
-            <i class="material-icons">pets</i>
-        </div>
+        
     </div>
 </div>
