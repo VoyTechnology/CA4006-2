@@ -3,7 +3,18 @@
     <a class="card shadow"
             *ngFor='let property of properties'
             [routerLink]="['PropertyDetail', {id: property.id.toString()}]">
-        {{property.eircode}}
-        {{property.askingPrice}}
+        
+        <div *ngIf="property.propertyType == 1">
+            <i class="material-icons">home</i>
+        </div>
+        <div>
+            {{property.address}}
+        </div>
+        <div>
+            {{property.askingPrice | currency:'EUR':true }}
+        </div>
+        <div>
+            Closes in <bidding-countdown countdownTo="{{property.auctionCloseTimestamp.millisecondsSinceEpoch}}"></bidding-countdown>
+        </div>
     </a>
 </div>

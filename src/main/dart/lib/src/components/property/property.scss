@@ -10,14 +10,20 @@
     }
 }
 
-.items-column {
+.items-columns {
     display: flex;
     flex-direction: row;
+
+    border: 1px solid grey;
+    padding: 0 0.5rem;
 }
 
 .items-rows {
     display: flex;
     flex-direction: column;
+
+    border: 1px solid grey;
+    padding: 0 0.5rem;
 }
 
 .width-70 {
@@ -26,4 +32,11 @@
 
 .width-30 {
     width: 30%;
+}
+
+.new-property {
+    form {
+        display: flex;
+        flex-direction: column;
+    }
 }

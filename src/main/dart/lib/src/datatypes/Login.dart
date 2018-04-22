@@ -14,6 +14,12 @@ class LoginRequest {
     email: json['email'],
     password: json['password'],
   );
+
+  /// toJson converts a the request
+  Map<String, dynamic> toJson() => {
+    'email': email,
+    'password': password,
+  };
 }
 
 /// Response received from the server.
@@ -25,12 +31,15 @@ class LoginResponse {
   /// field contains the cause of failure.
   String error;
 
+  /// Email used for information only
+  String email;
+
   /// Login response constructor
-  LoginResponse({this.token, this.error});
+  LoginResponse({this.token, this.error, this.email});
 
   /// creates a new login request from map
   factory LoginResponse.fromJson(Map<String, dynamic> json) => new LoginResponse(
     token: json['token'],
-    error: json['error'],
+    // error: json['error'],
   );
 }

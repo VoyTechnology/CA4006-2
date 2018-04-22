@@ -5,13 +5,18 @@ import 'package:angular_router/angular_router.dart';
 
 import '../../datatypes/Property.dart';
 import '../../services/properties.dart';
+import '../countdown/countdown.dart';
 
 /// Dashboard showing all properties
 @Component(
   selector: 'my-dashboard',
   templateUrl: 'dashboard.html',
   styleUrls: const ['dashboard.css'],
-  directives: const [CORE_DIRECTIVES, ROUTER_DIRECTIVES],
+  directives: const [
+    CORE_DIRECTIVES,
+    ROUTER_DIRECTIVES,
+    CountdownComponent
+  ],
   providers: const [PropertiesService],
   pipes: const [COMMON_PIPES],
 )

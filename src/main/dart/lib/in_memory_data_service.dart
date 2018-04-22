@@ -15,18 +15,21 @@ class InMemoryDataService extends MockClient {
   /// Initial list of available properties
   static final _initialProperties = <Property>[
     new Property(
-      url: "/#/property/1",
       id: 1,
       eircode: 'D09FW22',
-      postedTimestamp: new DateTime(2018, DateTime.APRIL, 21, 17, 0, 0),
-      auctionCloseTimestamp: new DateTime(2017, DateTime.APRIL, 22, 17, 0, 0),
+      address: 'The Helix, DCU',
       description: 'The Helix is a __modern__ building in *DCU*',
-      askingPrice: 102314,
+      askingPrice: 35000000,
       bedrooms: 1,
       bathrooms: 20,
-      hasGarage: false,
-      selfSustainable: false,
+      garage: true,
+      parking: true,
+      alarm: true,
       petsAllowed: true,
+      selfSustainable: true,
+      auctionCloseTimestamp: new DateTime(2018, DateTime.APRIL, 22, 17, 0, 0),
+      postedTimestamp: new DateTime(2018, DateTime.APRIL, 21, 17, 0, 0),
+      viewingTimes: '540-1080',
     ),
   ];
   static List<Property> _propertiesDB;
@@ -46,6 +49,8 @@ class InMemoryDataService extends MockClient {
         return _handleProperties(req);
       case 'property':
         return _handleProperty(req);
+      case 'login':
+        return _handleLogin(req);
     }
 
     return _handleProperties(req);
@@ -68,6 +73,14 @@ class InMemoryDataService extends MockClient {
     }
 
     return new Response(JSON.encode('{"error":"unknown method"}'), 405);
+  }
+
+  static Future<Response> _handleLogin(Request req) async {
+    if (req.method == 'POST') {
+      return new Response(JSON.encode({'token': 'abc123'}), 200, headers: _headers);
+    }
+
+    return new Response(JSON.encode({'error': "unknown method"}), 405);
   }
 
   static void _resetDB() {
