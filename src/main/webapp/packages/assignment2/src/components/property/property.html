@@ -1,0 +1,31 @@
+<!-- TODO: Add Tabs -->
+
+<div *ngIf="property != null" class="items-column">
+    <div class="items-rows width-70">
+        <div>
+            {{ property.eircode }} TODO: Resolve address
+        </div>
+        <div class="items-rows">
+            <span class="column">
+                {{ property.askingPrice }}
+            </span>
+            <span class="column">
+                {{property.bedrooms}} Bedrooms
+            </span>
+        </div>
+        <div>
+            <div [innerHTML]="property.description | markdown"></div>
+        </div>
+    </div>
+    <div class="items-rows width-30">
+        <div>
+            Properties
+        </div>
+        <div *ngIf="property.selfSustainable">
+            <i class="material-icons">nature</i>
+        </div>
+        <div *ngIf="property.petsAllowed">
+            <i class="material-icons">pets</i>
+        </div>
+    </div>
+</div>
