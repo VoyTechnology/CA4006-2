@@ -1,0 +1,6 @@
+src/main/webapp/* linguist-generated=true
+*.css linguist-generated=true
+*.js linguist-generated=true
+*.placeholder linguist-generated=true
+*.fbs linguist-generated=true
+pubspec.lock linguist-generated=true

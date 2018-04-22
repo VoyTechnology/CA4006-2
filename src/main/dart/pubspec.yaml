@@ -1,0 +1,31 @@
+name: assignment2
+description: CA4006 House Listings and bidding
+version: 0.1.0
+
+environment:
+  sdk: '>=1.24.3 <2.0.0'
+
+dependencies:
+  angular: ^4.0.0
+  angular_router: ^1.0.2
+  angular_components: ^0.8.0
+  angular_forms: ^1.0.0
+  transform_sass: '>=0.3.1'
+  json_object: ^1.0.19
+  markdown: ^0.11.4
+
+dev_dependencies:
+  browser: ^0.10.0
+  dart_to_js_script_rewriter: ^1.0.1
+
+
+transformers:
+  - transform_sass
+  - angular:
+      entry_points:
+        - web/index.dart
+  - dart_to_js_script_rewriter
+
+web:
+  compiler:
+    debug: dartdevc

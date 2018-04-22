@@ -4,7 +4,7 @@ jobs:
   build:
     working_directory: /ca4006
     docker:
-      - image: openjdk:8-alpine
+      - image: maven:3-jdk-8-alpine
     steps:
       - checkout
       - run: apk add --update make
@@ -24,7 +24,7 @@ jobs:
           at: /ca4006
       # TODO: Deploy should actually save releases to github
       - store_artifacts:
-          path: /ca4006/out/assignment2.war
+          path: /ca4006/target/assignment2.war
           destination: assignment2.war
 
 workflows:
